@@ -1,0 +1,125 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title> Golf Wang </title>
+        <style>
+        img {
+           width:230px;height:230p
+        }
+        input{
+            width:47px;height:150p
+        }
+        p{
+            width:400px;height:90px
+        }
+         
+        </style>
+        <script>
+            // setting numbers and prices for items 
+            var costtomake1 = 22; 
+            var costtomake2 = 60;
+            var costtomake3 = 17.5;
+            var sellingprice1 = 44;
+            var sellingprice2 = 120;
+            var sellingprice3 = 35;
+            
+           
+
+            //displaying prices onto webpage via javascript
+            function pricenum(){
+                document.getElementById("span1").innerHTML = "Price: $" + sellingprice1;
+                document.getElementById("span2").innerHTML = "Price: $" + sellingprice2;
+                document.getElementById("span3").innerHTML = "Price: $" + sellingprice3;
+                
+            }
+            // function to display the receipt, or the output, process the order, and display information on order.
+            function cart(){
+                alert("Order Processing into the land of Golf....")
+                var piece1 = 0
+                piece1=parseInt(document.getElementById("qt1").value);
+                var piece2 = 0
+                piece2=parseInt(document.getElementById("qt2").value);
+                var piece3 = 0
+                piece3=parseInt(document.getElementById("qt3").value);
+                var companytotal = (costtomake1 * piece1) + (costtomake2 * piece2) + (costtomake2 * piece3);
+                var buyertotal = (sellingprice1 * piece1) + (sellingprice2 * piece2) + (sellingprice3 * piece3);
+                var tax = 0.0875* buyertotal;
+                var quantitysold = piece1+piece2+piece3;
+                var profit = buyertotal - companytotal;
+                var shipping=0;
+                if(buyertotal<100){
+                 shipping= 25;
+            } else if(buyertotal>100 && buyertotal<200){
+                 shipping= 10;
+            } else {
+                 shipping= 0;
+            }
+                var total = tax + buyertotal + shipping;
+                
+                var build=""
+                build+= "Checkout" + "<br>";
+                build+= "Shipping $" + shipping + "<br>";
+                build+= "Subtotal $"+ buyertotal + "<br>";
+                build+= "Tax $" + tax.toFixed(2) + "<br>";
+                build+= "Order Total $" + total.toFixed(2) + "<br>";
+                build+= "Golf Wang Transaction Info" + "<br>";
+                build+= "Buyer Total Cost $" + buyertotal + "<br>";
+                build+= "Company Total Cost $" + companytotal + "<br>";
+                build+= "# of items sold " + quantitysold + "<br>";
+                build+= "Profit over Order $" + profit + "<br>";
+                build+= "Order #324942CDFJG3JG3"
+                var op= document.getElementById("output");
+                op.innerHTML= build;
+                
+            }
+            
+         </script>
+
+    </head>
+    <body>
+        <body onload ="pricenum()"><!--calling the function when the webpage is loading-->
+        <img src="golflefleur.jpeg">
+        <h1> SHOP </hr>
+        <div>
+            <img src="golftee.jpeg">
+            <p>MULTICOLOR GOLF WANG BOX LOGO TEE </p>
+            <p> Golf Wang Tee made of Cotton and Materials </p>
+            <span id="span1"> $44 </span>
+            <input type "text" id="qt1" placeholder="quantity">
+        </div>
+            <br>
+            <br>
+            <div> <!-- representing different items in the shop -->
+            <img src="golflefleurhoodie.jpeg">
+            <p>GOLF LE FLEUR ESSENTIALS HOODIE SWEATSHIRT </p>
+            <p> Golf Le Fleur Hoodie made of Flowers and Stuff </p>
+            <span id="span2"> $120 </span>
+            <input type "text" id="qt2" placeholder="quantity">
+            </div>
+            <br>
+            <br>
+            <div>
+            <img src="golfwangsocks.jpeg">
+            <p> GOLF BASIC 3 PACK SOCKS </p>
+            <p> Stuff to put your feet in </p>
+            <span id="span3"> $35 </span>
+            <input type "text" id="qt3" placeholder="quantity">
+            </div>
+            <br>
+            <br>
+            <!-- processing order and button -->
+            <button onclick="cart()"> Place Order </button>
+            <br>
+            <br>
+            <div id="output"> </div>
+            <img src="golfwangofficallogo.jpeg">
+    </body>
+</html>
+
+
+            
+
+
+        
+
+
